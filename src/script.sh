@@ -1,0 +1,3 @@
+date +%D	
+whoami
+hostname
