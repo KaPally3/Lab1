@@ -78,7 +78,7 @@
 
 Чтобы узнать модель процессора, достаточно выполнить следующую команду: `$ lscpu | grep -E '^Модель|^Model'`.
 
-![Model](/home/kapally3/Desktop/NSTU/NSTU/images/4_1_1.png)
+![Model](../images/4_1_1.png)
 
 **lscpu**  собирает информацию об архитектуре процессора из sysfs и /proc/cpuinfo. 
 **^** — сопоставляет символы в начале строки.
@@ -86,13 +86,13 @@
 
 Если же мы хотим узнать имя модели, то для этого нужно изменить шаблон в команде выше на `'^Имя модели|^Model name'`, чтобы получить такую команду: `$ lscpu | grep -E '^Имя модели|^Model name'`.
 
-![Model name](/home/kapally3/Desktop/NSTU/NSTU/images/4_1_2.png)
+![Model name](../images/4_1_2.png)
 
 ### Архитектура
 
 Чтобы узнать архитектуру процессора, достаточно будет изменить шаблон команды из предыдущего пункта на `'^Архитектура|^Architecture'`, чтобы получилась такая строка: `$ lscpu | grep -E '^Архитектура|^Architecture'`.
 
-![Architecture](/home/kapally3/Desktop/NSTU/NSTU/images/4_2.png)
+![Architecture](../images/4_2.png)
 
 ### Тактовая частота
 
@@ -100,27 +100,27 @@
 
 Команда с использованием `sudo` - права суперпользователя, которая используется в скрипте: `sudo  dmidecode -t processor | grep -E 'Current Speed'`.
 
-![dmidecode](/home/kapally3/Desktop/NSTU/NSTU/images/4_3_1.png)
+![dmidecode](../images/4_3_1.png)
 
 Для того, чтобы посмотреть максимальную и минимальные частоты, а также масштабирование частоты (на некоторых ОС этот пункт заменяется текущей частотой процессора), нужно ввести следующую команду: `lscpu | grep -E 'MHz'`.
 
-![Max&Min](/home/kapally3/Desktop/NSTU/NSTU/images/4_3_2.png)
+![Max&Min](../images/4_3_2.png)
 
 Если есть надобность посмотреть частоту всех ядер в процессоре, то вводим данную команду: `grep -E '^cpu MHz' /proc/cpuinfo`.
 
-![all cores MHz](/home/kapally3/Desktop/NSTU/NSTU/images/4_3_3.png)
+![all cores MHz](../images/4_3_3.png)
 
 ### Количество ядер
 
 Чтобы узнать количество ядер, выполняем данную команду: `lscpu | grep -m 1 -w "^CPU(s):"`.
 
-![Count cores](/home/kapally3/Desktop/NSTU/NSTU/images/4_4.png)
+![Count cores](../images/4_4.png)
 
 ### Количество потоков на одно ядро
 
 Количество поток на одно ядро находится благодаря следующей команды: `lscpu | grep -E '^Thread'`.
 
-![KPNOYA](/home/kapally3/Desktop/NSTU/NSTU/images/4_5.png)
+![KPNOYA](../images/4_5.png)
 
 ## Оперативная память
 
@@ -128,10 +128,10 @@
 
 Чтобы определить сколько всего оперативной памяти рабочая машина имеет, следует воспользоваться представленной командой: `grep -E '^MemTotal' /proc/meminfo`.
 
-![MemTotal](/home/kapally3/Desktop/NSTU/NSTU/images/5_1.png)
+![MemTotal](../images/5_1.png)
 
 ### Доступно
 
 Для определения доступной оперативной памяти, заменяем шаблон `'^MemTotal'` на `'^MemAvailable'`, получаем такую команду: `grep -E '^MemAvailable' /proc/meminfo`.
 
-![MemAvaible](/home/kapally3/Desktop/NSTU/NSTU/images/5_2.png)
+![MemAvaible](../images/5_2.png)
