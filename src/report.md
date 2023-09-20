@@ -144,7 +144,7 @@
 
 `$ sudo fdisk -l | grep -m 1 -E '^Disk|^Диск'`
 
-![Всего](/home/kapally3/Desktop/NSTU/NSTU/images/6_1.png)
+![Всего](../images/6_1.png)
 
 ### Дoступнo	
 
@@ -154,4 +154,4 @@
 
 `$ df -h /`
 
-![](/home/kapally3/Desktop/NSTU/NSTU/images/6_3.png)
+![/](../images/6_3.png)
