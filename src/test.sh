@@ -1,3 +1,11 @@
-collum_12="$(ip a | grep -P "^[0-9]{1,}" | awk '{print $1 $2}')"
-collum_3="$(ip a |grep -E 'ether' | awk '{print $2}')"
-echo "$collum_12$collum_3"
+#!/bin/bash
+count=1
+for iface in $(ls /sys/class/net/)
+do
+MAC=$(ifconfig $iface | grep -E 'ether' | awk '{print $2}')
+if [  ${#MAC} -eq 0 ]; then
+MAC="                 "
+fi
+echo "$count $iface $MAC"
+count=$[count+1]
+done
