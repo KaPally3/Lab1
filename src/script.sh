@@ -24,3 +24,18 @@ echo "Всего: $(grep -E '^MemTotal' /proc/meminfo | sed 's/MemTotal:*\s*//')
 
 echo "Доступно: $(grep -E '^MemAvailable' /proc/meminfo | sed 's/MemAvailable:*\s*//')"
 
+echo -e "\033[35mЖесткий диск\033[0m"
+
+echo "Всего: $(sudo fdisk -l | grep -m 1 -E '^Disk|^Диск' | awk '{print $3, $4}' | sed 's/,$//')"
+
+echo "Доступно: $(df -h / | sed '2!D' | awk '{print $4}')"
+
+echo "Смонтировано в корневую директорию /: $(df -h / | sed '2!D' | awk '{print $2}')"
+
+echo "SWAP всего: $(free -h | grep -E '^Swap' | awk '{print $2}')"
+
+echo "SWAP доступно: $(free -h | grep -E '^Swap' | awk '{print $4}')"
+
+echo -e "\033[34mСетевые интерфейсы\033[0m"
+
+echo "Количество сетевых интерфейсов: $(ls /sys/class/net | cat -n | tail -1 | awk '{print $1}')"
