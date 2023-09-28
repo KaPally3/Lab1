@@ -12,11 +12,11 @@ echo "Модель: $(lscpu | grep -E '^Имя модели|^Model name' | sed '
 
 echo "Архитектура: $(lscpu | grep -E '^Архитектура|^Architecture' | sed 's/Архитектура:*\s*//;s/Architecture:*\s*//')"
 
-echo "Тактовая частота: $(sudo  dmidecode -t processor | grep -E 'Current Speed' | sed 's/\t//;s/Current Speed:*\s*//')"
+echo "Тактовая частота: $(sudo  dmidecode -t processor | grep -E 'Current Speed' | awk '{print $3, $4}')"
  
-echo "Количество ядер: $(lscpu | grep -m 1 -w "^CPU(s):" | sed 's/CPU(s):*\s*//')"
+echo "Количество ядер: $(lscpu | grep -m 1 -w "^CPU(s):" | awk '{print $2}')"
 
-echo "Количество потоков на одно ядро: $(lscpu | grep -E '^Thread' | sed 's/Thread(s) per core:\s*//')"
+echo "Количество потоков на одно ядро: $(lscpu | grep -E '^Thread' | awk '{print $4}')" 
 
 echo -e "\033[32mОперативная память\033[0m"
 
