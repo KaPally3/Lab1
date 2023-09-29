@@ -39,3 +39,25 @@ echo "SWAP доступно: $(free -h | grep -E '^Swap' | awk '{print $4}')"
 echo -e "\033[34mСетевые интерфейсы\033[0m"
 
 echo "Количество сетевых интерфейсов: $(ls /sys/class/net | cat -n | tail -1 | awk '{print $1}')"
+
+#Table
+
+count=1
+NUMBER="№"
+printf "%-10s | %-46s | %-22s | %-20s | %-20s |\n" "$NUMBER" "Имя сетевого интерфейса" "MAC адрес" "IP адрес" "Скорость соединения"
+for NAME in $(ls /sys/class/net/)
+do
+MAC=$(ifconfig $NAME | grep -E 'ether' | awk '{print $2}')
+IP=$(ip --brief address show $NAME | awk '{print $3}' | cut -d'/' -f1)
+if [  ${#MAC} == 0 ]; then
+  MAC='                 '
+fi
+if [ ${#IP} != 0 ] && [ $NAME != "lo" ]; then
+ SPEED=$(speedtest --secure | grep -E 'Download' | awk '{print $2, $3}')
+else
+ SPEED=' '
+fi
+printf "%-8s | %-25s | %-15s | %-15s | %-19s |\n" "$count" "$NAME" "$MAC" "$IP" "$SPEED"
+count=$[count+1]
+done
+
