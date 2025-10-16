@@ -210,7 +210,7 @@ printf "%-8s | %-25s | %-15s | %-15s | %-19s |\n" "$count" "$NAME" "$MAC" "$IP" 
 count=$[count+1]
 done`
 
-![](/home/kapally3/Desktop/NSTU/NSTU/images/7_2.png)
+![](../images/7_2.png)
 
 ## Код
 
